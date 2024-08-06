@@ -1,0 +1,50 @@
+{
+    "self": "https://restassuredjira.atlassian.net/rest/api/3/issue/10005/comment/10019",
+    "id": "10019",
+    "author": {
+        "self": "https://restassuredjira.atlassian.net/rest/api/3/user?accountId=70121%3A291db9ca-acb7-43d4-90a3-a51dafd59a71",
+        "accountId": "70121:291db9ca-acb7-43d4-90a3-a51dafd59a71",
+        "emailAddress": "singh.saurav@icloud.com",
+        "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/32"
+        },
+        "displayName": "Saurav Singh",
+        "active": true,
+        "timeZone": "Asia/Kolkata",
+        "accountType": "atlassian"
+    },
+    "body": {
+        "type": "doc",
+        "version": 1,
+        "content": [{
+                "type": "paragraph",
+                "content": [{
+                        "text": "This is a Test Comment",
+                        "type": "text"
+                    }
+                ]
+            }
+        ]
+    },
+    "updateAuthor": {
+        "self": "https://restassuredjira.atlassian.net/rest/api/3/user?accountId=70121%3A291db9ca-acb7-43d4-90a3-a51dafd59a71",
+        "accountId": "70121:291db9ca-acb7-43d4-90a3-a51dafd59a71",
+        "emailAddress": "singh.saurav@icloud.com",
+        "avatarUrls": {
+            "48x48": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/48",
+            "24x24": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/24",
+            "16x16": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/16",
+            "32x32": "https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/70121:291db9ca-acb7-43d4-90a3-a51dafd59a71/9ae1c3c4-eda4-4ed6-9c2b-bce88aaec972/32"
+        },
+        "displayName": "Saurav Singh",
+        "active": true,
+        "timeZone": "Asia/Kolkata",
+        "accountType": "atlassian"
+    },
+    "created": "2023-02-19T19:14:55.446+0530",
+    "updated": "2023-02-19T19:14:55.446+0530",
+    "jsdPublic": true
+}

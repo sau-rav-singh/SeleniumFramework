@@ -1,0 +1,54 @@
+image: singhsaurav/seleniumdocker:latest
+#image: markhobson/maven-chrome:jdk-21
+#image: maven:3.9.5-eclipse-temurin-21
+
+stages:
+  - build
+  - test
+  #- sendTestSummary
+
+cache:
+  paths:
+    - .m2/repository/
+
+before_script:
+  - apt-get update -yq
+  - apt-get install -y zip
+
+build:
+  stage: build
+  script:
+    - mvn compile --batch-mode
+
+test:
+  stage: test
+  script:
+    - echo "$TAG"
+    - mvn test -Dheadless=true -Dbrowser=chrome -Dcucumber.filter.tags="$TAG"
+  artifacts:
+    paths:
+      - reports/**
+      - target
+    when: always
+    expire_in: 1 day
+  allow_failure: false
+  only:
+    - main
+    - schedules
+  except:
+    - merge_requests
+
+#sendTestSummary:
+#  stage: sendTestSummary
+#  image: python:3
+#  script:
+#    - pip install jinja2 requests
+#    - python $CI_PROJECT_DIR/sendTestResults.py
+#  artifacts:
+#    paths:
+#      - test_results.html
+#    expire_in: 1 day
+#  only:
+#    - main
+#  except:
+#    - merge_requests

@@ -1,0 +1,32 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub
+    ports:
+    - 4444:4444
+    # - 4442:4442
+    # - 4443:4443
+  chrome:
+    image: selenium/node-chrome
+    shm_size: '2g'
+    depends_on:
+    - hub
+    deploy:
+      replicas: 1
+    environment:
+    - SE_EVENT_BUS_HOST=hub
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+    - SE_NODE_MAX_SESSIONS=2
+  firefox:
+    image: selenium/node-firefox
+    shm_size: '2g'
+    depends_on:
+    - hub
+    deploy:
+      replicas: 0
+    environment:
+    - SE_EVENT_BUS_HOST=hub
+    - SE_EVENT_BUS_PUBLISH_PORT=4442
+    - SE_EVENT_BUS_SUBSCRIBE_PORT=4443    

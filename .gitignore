@@ -1,0 +1,10 @@
+/target/
+/reports/
+/backupReports/
+/test-output/
+/.classpath
+/.project
+/.settings/
+/.idea/
+/${package.directory}/
+/output.html

@@ -6,18 +6,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Properties;
 
 public class TestBase {
 
     private static final ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
-    private static final String GRID_URL = "http://localhost:4444/wd/hub";
+    private static final String GRID_URL = "http://192.168.1.22:4444/wd/hub";
 
     public WebDriver getDriver() {
         if (webDriverThreadLocal.get() == null) {
@@ -52,26 +51,23 @@ public class TestBase {
     }
 
     private void initializeRemoteWebDriver(String browser, String headlessMode) {
-        MutableCapabilities capabilities;
-        switch (browser.toLowerCase()) {
-            case "chrome":
-                capabilities = new ChromeOptions();
-                break;
-            case "edge":
-                capabilities = new EdgeOptions();
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
-        }
+        MutableCapabilities capabilities = switch (browser.toLowerCase()) {
+            case "chrome" -> new ChromeOptions();
+            case "edge" -> new EdgeOptions();
+            default -> throw new IllegalArgumentException("Unsupported browser: " + browser);
+        };
 
         if ("true".equalsIgnoreCase(headlessMode)) {
+            assert capabilities instanceof ChromeOptions;
             ((ChromeOptions) capabilities).addArguments("--headless");
         }
 
         try {
-            webDriverThreadLocal.set(new RemoteWebDriver(new URL(GRID_URL), capabilities));
+            webDriverThreadLocal.set(new RemoteWebDriver(new URI(GRID_URL).toURL(), capabilities));
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid Grid URL: " + GRID_URL, e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 
